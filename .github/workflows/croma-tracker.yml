@@ -2,8 +2,8 @@ name: Croma Discount Tracker
 
 on:
   schedule:
-    - cron: '0 */4 * * *'     # Runs every 4 hours
-  workflow_dispatch:          # Allows you to run manually
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
 
 jobs:
   track-deals:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
