@@ -46,15 +46,14 @@ def main():
             
             soup = BeautifulSoup(resp.text, 'html.parser')
             
-            # Try multiple possible selectors
             cards = soup.find_all(['div', 'article'], class_=lambda x: x and any(word in str(x).lower() for word in ['product', 'item', 'card', 'offer']))
             
             print(f"Found {len(cards)} potential product cards")
             
             for card in cards[:30]:
                 try:
-                    name = card.find(['h2', 'h3', 'a', 'p'])
-                    name_text = name.get_text(strip=True) if name else "No Name"
+                    name_tag = card.find(['h2', 'h3', 'a', 'p'])
+                    name_text = name_tag.get_text(strip=True) if name_tag else "No Name"
                     
                     prices = card.find_all(['span', 'div', 'p'], class_=lambda x: x and 'price' in str(x).lower())
                     
