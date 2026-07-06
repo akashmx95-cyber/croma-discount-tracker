@@ -18,12 +18,8 @@ jobs:
         with:
           python-version: '3.12'
       
-      - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4 python-telegram-bot
-      
-      - name: Run Croma Tracker
+           - name: Run Croma Tracker
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-        run: python croma_tracker.py
+        run: python -u croma_tracker.py
